@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+ <h4>Write one example explaining how you can write a callback function ?</h4>
+     function text(name, callback) {
+     console.log('Hi' + ' ' + name);
+     callback();
+ }
+
+ function callMe() {
+     console.log('I am  function');
+ }
+
+ text('ram', callMe);
+ output: Hi ram 
+        I am function
+
+ <h4>Write callback function to print numbers from 1 to 7, in which 1 should be printed after 1 sec , 2 should be printed after 2 sec, 3 should be printed after 3 sec and so on.
+ Numbers
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7</h4>
+ function callbackhell(){
+     setTimeout(()=>{
+         console.log("1")
+           setTimeout(()=>{
+            console.log("2")
+             setTimeout(()=>{
+               console.log("3")
+               setTimeout(()=>{
+                   console.log("4")
+                  setTimeout(()=>{
+                      console.log("5")
+                    setTimeout(()=>{
+                       console.log("6")
+                       setTimeout(()=>{
+                         console.log("7")
+                   },7000);
+                 },6000);
+               },5000);
+             },4000);
+           },3000);
+        },2000);
+     }, 1000);
+ }
+ callbackhell();
+
+ output: 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ <h4>Write promise function to print numbers from 1 to 7, in which 1 should be printed after 1 sec , 2 should be printed after 2 sec, 3 should be printed after 3 sec and so on.</h4>
+    let counter = 1;
+function timeOut(i) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(counter++);
+    },1000 * i)
+  });
+}
+for (let i = 1; i <= 7 ; i++) {
+  timeOut(i).then((x) => console.log('counter:', x))
+
+ output: 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+}
+ <h4>Create a promise function accepting a argument, if yes is passed to the function then it should go to resolved state and print Promise Resolved, and if nothing is passed then it should go to reject state and catch the error and print Promise Rejected </h4>
+  const root = (resolve,reject) => {
+         let a = 10
+         if(a > 9){
+             resolve("resolved")
+         }
+         else reject("rejected")
+       }
+       let x = new Promise(root)
+       function func1(message){
+         console.log(message)
+       }
+       function func2(message){
+         console.log(message)
+       }
+       x.then(func1).catch(func2)
+
+       output:resolved
+
+     <h4>create examples to explain callback function</h4>
+          function show(a){
+             console.log("I am function " + a);
+          }
+          function test(callback){
+             var a= 101;
+             callback(a);
+          }
+          test(show); 
+
+          output:I am function 101
+
+     <h4>create examples to explain callback hell function</h4>
+     2s student roll no.
+     2s 2nd roll no name and age
+
+     const getRollNo = () => {
+         setTimeout(()=> {
+        
+             let roll_no = [1,2,3,4,5];
+             console.log(roll_no);
+             setTimeout((rollno)=>{
+                 const biodata = {
+                     name :'rohan',
+                     age: '25'
+                 }
+                console.log(` My roll no is ${rollno}. my name is ${biodata.name} and i am ${biodata.age} yeard old`)
+             },2000,roll_no[1])
+         },2000)
+     }
+     getRollNo();
+     output: arr=[1,2,3,4,5],
+     My roll no is 2. my name is rohan and I am 25 yeard old 
+
+     <h4>create examples to explain promise function</h4>
+     const root = (resolve,reject) => {
+         let a = 10
+         if(a < 9){
+             resolve("resolved")
+         }
+         else reject("rejected")
+       }
+       let x = new Promise(root)
+       function func1(message){
+         console.log(message)
+       }
+       function func2(message){
+         console.log(message)
+       }
+       x.then(func1).catch(func2)
+
+       output:rejected
+
+     <h4>create examples to explain async await function</h4>
+     async function test() {
+       console.log("2:Message");
+       await  console.log("3:Message");
+       console.log("4:Message");
+     }
+       console.log("1:Message");
+       test();
+       console.log("5:Message")
+
+       output:    1:message
+                  2:message
+                  3:message
+                  5:message
+                  4:message
+               
+
+     <h4>create examples to explain promise all function</h4>
+      let p1 = new Promise((resolve,reject) => {
+          setTimeout(() => {
+              console.log('the first promise has resolved');
+              resolve(10);
+           },1 * 1000);
+      });
+      let p2 = new Promise((resolve,reject) => {
+          setTimeout(() => {
+              console.log('the second promise has resolved');
+              resolve(20);
+          },2 * 1000);
+      });
+      let p3 = new Promise((resolve,reject) => {
+          setTimeout(() => {
+              console.log('the third promise has resolved');
+              resolve(30);
+          },3 * 1000);
+      });
+      Promise.all([p1,p2,p3]).then((result)=> {
+          console.log(`Result: ${result}`);
+      }).catch((error)=>{
+          console.log(`Error: ${error}`);
+      });
+      output: the first promise has resolved
+              the second promise has resolved
+              the third promise has resolved
+              Result: 10,20,30
+  </pre>
+</body>
+</html>
